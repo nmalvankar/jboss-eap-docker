@@ -9,12 +9,10 @@ ENV DB_USERNAME=sa \
 
 USER root
 
-COPY custom-eap64/configuration/standalone-openshift.xml /opt/eap/standalone/configuration
-COPY custom-eap64/deployments/jboss-helloworld.war /opt/eap/standalone/deployments
+COPY configuration/standalone-openshift.xml /opt/eap/standalone/configuration
+COPY deployments/jboss-helloworld.war /opt/eap/standalone/deployments
 
 RUN chown jboss:jboss /opt/eap/standalone/configuration/standalone-openshift.xml
 RUN chown jboss:jboss /opt/eap/standalone/deployments/jboss-helloworld.war
 
 USER jboss
-
-#CMD ["/opt/eap/bin/standalone.sh", "-c", "standalone-poc.xml", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
